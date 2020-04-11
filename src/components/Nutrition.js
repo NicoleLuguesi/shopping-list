@@ -7,12 +7,18 @@ class Nutrition extends Component {
   };
 
   componentDidMount() {
-    nutritionAPI(this.props.items[0].name).then((res) => {
-      console.log(res);
-      this.setState({
-        sodium: res.foods[0].nf_sodium,
+    try {
+      nutritionAPI(this.props.items[0].name).then((res) => {
+        console.log(res);
+        this.setState({
+          sodium: res.foods[0].nf_sodium,
+        });
       });
-    });
+      
+    } catch (error) { console.error(error)
+      
+    }
+   
   }
   render() {
     return (
